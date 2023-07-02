@@ -1,0 +1,69 @@
+class ContaCorrente:
+    def __init__(self, agencia, conta, saldo, favorecido):
+       self.agencia = agencia 
+       self.conta = conta 
+       self.saldo = saldo 
+       self.favorecido = favorecido 
+
+    def depositarValor(self,valor):
+        if valor > 0:
+            self.saldo += valor
+            print("Depósito realizado com sucesso.")
+        else:
+            print("O valor do depósito deve ser maior que zero.")
+
+    def sacarValor (self,sacar): 
+        if sacar > self.saldo:  
+            print ("negado")
+        else: 
+            self.saldo -= sacar 
+            print ("saque realizado com sucesso")
+
+    def transferencia (self,transferencia, destino):
+        if transferencia > self.saldo: 
+            print("voce nao tem dinheiro na conta") 
+        else: 
+            self.saldo -= transferencia
+            destino.depositarValor(transferencia)
+        
+        
+     
+
+agencia = int(input ("agencia"))
+conta = int(input ("conta")) 
+favorecido = input ("favorecido") 
+saldo = int(input ("saldo")) 
+
+conta_fernando = ContaCorrente(agencia,conta,saldo,favorecido)
+print(conta_fernando.__dict__)
+
+""" valor_deposito = int(input ("valor a ser depositado"))
+conta_fernando.depositarValor(valor_deposito)
+print(conta_fernando.saldo)
+
+valor_deposito = int(input ("valor a ser depositado"))
+conta_fernando.depositarValor(valor_deposito)
+print(conta_fernando.saldo)
+
+valor_deposito = int(input ("valor a ser depositado"))
+conta_fernando.depositarValor(valor_deposito)
+print(conta_fernando.saldo)
+
+valor_deposito = int(input ("valor a ser depositado"))
+conta_fernando.depositarValor(valor_deposito)
+print(conta_fernando.saldo)
+ """
+
+conta_herique = ContaCorrente(agencia,conta,saldo,favorecido)
+print(conta_herique.__dict__)
+
+
+
+saque = int(input ( " valor a ser sacado")) 
+conta_fernando.sacarValor(saque) 
+print (conta_fernando.saldo) 
+
+transferencia = int(input ("valor a ser transferido"))
+conta_fernando.transferencia(10000,conta_herique) 
+print(conta_fernando.saldo)
+print(conta_herique.saldo)
